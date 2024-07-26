@@ -2,8 +2,7 @@ export default class Building {
   constructor(sqft) {
     this.sqft = sqft;
     // Check method if is in class extends Building
-    const checkMethod = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
-    if (!('evacuationWarningMessage' in checkMethod)
+    if (typeof this.evacuationWarningMessage !== 'function'
         && new.target !== Building) {
       throw new Error('Class extending Building must override evacuationWarningMessage');
     }
