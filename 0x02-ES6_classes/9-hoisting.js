@@ -1,15 +1,29 @@
 class HolbertonClass {
   constructor(year, location) {
-    this._year = year;
-    this._location = location;
+    this.year = year;
+    this.location = location;
   }
 
   get year() {
     return this._year;
   }
 
+  set year(value) {
+    if (typeof (value) !== 'number') {
+      throw TypeError('Year must be a Number');
+    }
+    this._year = value;
+  }
+
   get location() {
     return this._location;
+  }
+
+  set location(value) {
+    if (typeof (value) !== 'string') {
+      throw TypeError('Location must be a string');
+    }
+    this._location = value;
   }
 }
 
@@ -18,17 +32,46 @@ const class2020 = new HolbertonClass(2020, 'San Francisco');
 
 class StudentHolberton {
   constructor(firstName, lastName, holbertonClass) {
-    this._firstName = firstName;
-    this._lastName = lastName;
-    this._holbertonClass = holbertonClass;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.holbertonClass = holbertonClass;
+  }
+
+  get firstName() {
+    return this._firstName;
+  }
+
+  set firstName(value) {
+    if (typeof (value) !== 'string') {
+      throw TypeError('First name must be a string');
+    }
+    this._firstName = value;
+  }
+
+  get lastName() {
+    return this._lastName;
+  }
+
+  set lastName(value) {
+    if (typeof (value) !== 'string') {
+      throw TypeError('Last name must be a string');
+    }
+    this._lastName = value;
+  }
+
+  get holbertonClass() {
+    return this._holbertonClass;
+  }
+
+  set holbertonClass(value) {
+    if (!(value instanceof HolbertonClass)) {
+      throw TypeError('HolbertonClass must be a string');
+    }
+    this._holbertonClass = value;
   }
 
   get fullName() {
     return `${this._firstName} ${this._lastName}`;
-  }
-
-  get holbertonClass() {
-    return this.holbertonClass;
   }
 
   get fullStudentDescription() {
