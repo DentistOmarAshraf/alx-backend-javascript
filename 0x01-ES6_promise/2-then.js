@@ -1,16 +1,13 @@
 /* eslint-disable no-unused-vars */
 export default function handleResponseFromAPI(promise) {
+  console.log('Got a response from the API');
   promise
     .then((response) => {
-      console.log('Got a response from the API');
       const obj = {
         status: 200,
         body: 'success',
       };
       return obj;
     })
-    .catch((err) => {
-      console.log('Got a response from the API');
-      return new Error('');
-    });
+    .catch((err) => new Error(''));
 }
