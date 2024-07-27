@@ -7,8 +7,7 @@ export default function handleProfileSignup() {
     .then((data) => process.stdout.write(`${data.body} `))
     .then(() => {
       user
-        .then((data) => console.log(`${data.firstName} ${data.lastName}`))
-        .catch((err) => console.log(err));
+        .then((data) => console.log(`${data.firstName} ${data.lastName}`));
     })
-    .catch((err) => console.log(err));
+    .catch(() => console.log('Signup system offline'));
 }
