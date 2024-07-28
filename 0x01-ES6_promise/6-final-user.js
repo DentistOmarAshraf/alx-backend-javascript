@@ -6,8 +6,21 @@ import uploadPhoto from './5-photo-reject';
 
 export default function handleProfileSignup(firstName, lastName, fileName) {
   const sign = signUpUser(firstName, lastName);
-  const file = uploadPhoto(fileName);
-  return Promise.all([sign, file])
-    .then((data) => data)
-    .catch((err) => err);
+  const photo = uploadPhoto(fileName);
+  return Promise.allSettled([sign, photo])
+    .then((result) => {
+      const arrayOfData = result.map((result) => {
+        if (result.status === 'fulfilled') {
+          return {
+            status: result.status,
+            value: result.value,
+          };
+        }
+        return {
+          status: result.status,
+          value: result.reason.toString().split('\n')[0],
+        };
+      });
+      return arrayOfData;
+    });
 }
