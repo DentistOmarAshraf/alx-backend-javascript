@@ -1,7 +1,6 @@
 export default function getListStudentsIds(arrayOfObject) {
-  if (!(Array.isArray(arrayOfObject))) {
-    return [];
-  }
+  if (!(Array.isArray(arrayOfObject))) return [];
+
   try {
     const arrayOfIds = arrayOfObject.map((obj) => {
       if (obj.id) return obj.id;
