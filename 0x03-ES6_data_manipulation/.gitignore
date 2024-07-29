@@ -1,0 +1,11 @@
+# Ignore node_module
+node_modules/
+
+# Ignore Package.json
+*.json
+
+# Ignore Babel.confing.js
+babel.config.js
+
+# Ignore eslintrc.js
+.eslintrc.js
