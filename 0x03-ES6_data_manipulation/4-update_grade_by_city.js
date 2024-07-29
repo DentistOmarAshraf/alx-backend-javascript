@@ -1,17 +1,17 @@
 export default function updateStudentGradeByCity(listOfStudent, city, newGrades) {
+  // First filter Student in City
   const studentInCity = listOfStudent.filter((obj) => obj.location === city);
+  // Using map to change grades on all students at city
   const afterAddGrade = studentInCity.map((obj) => {
-    let change = false;
-    newGrades.forEach((elem) => {
-      if (elem.studentId === obj.id) {
-        // eslint-disable-next-line no-param-reassign
-        obj.grade = elem.grade;
-        change = true;
-      }
-      // eslint-disable-next-line no-param-reassign
-      if (!(change)) obj.grade = 'N/A';
-    });
-    return obj;
+    // Bring student grade from newGrades
+    const degreOfStudent = newGrades.filter((elem) => elem.studentId === obj.id);
+    const newObj = obj;
+    if (degreOfStudent.length === 0) {
+      newObj.grade = 'N/A';
+    } else {
+      newObj.grade = degreOfStudent[0].grade;
+    }
+    return newObj;
   });
   return afterAddGrade;
 }
