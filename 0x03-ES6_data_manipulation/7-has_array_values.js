@@ -1,3 +1,7 @@
 export default function hasValuesFromArray(set, array) {
-  return (array in Array.from(set));
+  let bool = true;
+  array.forEach((elem) => {
+    if (!(elem in Array.from(set))) bool = false;
+  });
+  return bool;
 }
