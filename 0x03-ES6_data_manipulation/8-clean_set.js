@@ -6,7 +6,7 @@ export default function cleanSet(set, startString) {
   for (const elem of set) {
     if (typeof (elem) !== 'string') return '';
     if (elem.startsWith(startString)) {
-      filteredStrings.push(elem.replace(startString, ''));
+      filteredStrings.push(elem.substring(startString.length, elem.length));
     }
   }
   return filteredStrings.join('-');
