@@ -74,3 +74,15 @@ const executeWork: executeWorkFunction = (employee) => {
         console.log(employee.workTeacherTasks())
     }
 }
+
+type Subjects = 'Math' | 'History';
+
+interface teachClassFunction {
+    (todayClass: Subjects) : string;
+}
+
+const teachClass:teachClassFunction = (todayClass) => {
+    if (todayClass === 'Math')
+        return (`Teaching ${todayClass}`);
+    return (`Teaching ${todayClass}`);
+}
