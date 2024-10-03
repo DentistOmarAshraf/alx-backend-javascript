@@ -22,11 +22,19 @@ const app = createServer((req, res) => {
     };
     console.log('This is the list of our students');
     countStudents(path)
-      .then(() => res.end(output.join('\n')))
-      .catch((err) => {
-        const text = err;
+      .then(() => {
+        const text = output.join('\n');
+        res.setHeader('Content-Type', 'text/plain');
+        res.setHeader('Content-Length', text.length);
         res.statusCode = 200;
-        res.end(`${text}`);
+        res.end(text);
+      })
+      .catch((err) => {
+        const text = err.toString();
+        res.setHeader('Content-Type', 'text/plain');
+        res.setHeader('Content-Length', text.length);
+        res.statusCode = 200;
+        res.end(text);
       });
   }
 });
