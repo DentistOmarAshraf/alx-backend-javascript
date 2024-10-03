@@ -10,7 +10,7 @@ const app = createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   res.setHeader('Content-length', responseText.length);
-  res.write(Buffer.from(responseText));
+  res.end(responseText);
 });
 
 app.listen(port, hostname);
