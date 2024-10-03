@@ -16,24 +16,22 @@ const app = createServer((req, res) => {
   }
   if (req.url === '/students' && req.method === 'GET') {
     const path = process.argv[2];
-    const originalLog = console.log;
-    let output = '';
+    const output = [];
     console.log = (data) => {
-      output += `${data}\n`;
+      output.push(data);
     };
     console.log('This is the list of our students');
     countStudents(path)
-      .then(() => res.end(output))
+      .then(() => res.end(output.join('\n')))
       .catch((err) => {
         const text = err.message;
         res.statusCode = 500;
         res.end(`${text}\n`);
       });
-
-    console.log = originalLog;
   }
 });
 
 app.listen(port, host, () => {
   console.log(`Server Run on ${host}:${port}`);
 });
+module.exports = app;
