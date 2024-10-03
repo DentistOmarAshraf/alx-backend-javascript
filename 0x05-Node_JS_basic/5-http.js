@@ -30,10 +30,10 @@ const app = createServer((req, res) => {
         res.end(text);
       })
       .catch((err) => {
-        const text = err.toString();
+        const text = err.message.toString();
         res.setHeader('Content-Type', 'text/plain');
         res.setHeader('Content-Length', text.length);
-        res.statusCode = 200;
+        res.statusCode = 404;
         res.end(text);
       });
   }
