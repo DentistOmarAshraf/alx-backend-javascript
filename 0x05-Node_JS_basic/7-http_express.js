@@ -12,6 +12,12 @@ app.get('/', (req, res) => {
 
 app.get('/students', (req, res) => {
   const path = process.argv[2];
+  if (!path) {
+    const text = 'Cannot load the database';
+    res.statusCode = 404;
+    res.send(text);
+    return;
+  }
   const output = [];
   console.log = (data) => {
     output.push(data);
@@ -23,7 +29,7 @@ app.get('/students', (req, res) => {
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
       res.setHeader('Content-Length', text.length);
-      res.send(text);
+      res.end(text);
     })
     .catch((err) => {
       const text = err.message.toString();
