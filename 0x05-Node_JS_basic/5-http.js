@@ -25,7 +25,7 @@ const app = createServer((req, res) => {
       .then(() => res.end(output.join('\n')))
       .catch((err) => {
         const text = err;
-        res.statusCode = 500;
+        res.statusCode = 200;
         res.end(`${text}`);
       });
   }
