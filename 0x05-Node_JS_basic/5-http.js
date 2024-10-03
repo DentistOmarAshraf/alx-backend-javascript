@@ -24,9 +24,9 @@ const app = createServer((req, res) => {
     countStudents(path)
       .then(() => res.end(output.join('\n')))
       .catch((err) => {
-        const text = err.message;
+        const text = err;
         res.statusCode = 500;
-        res.end(`${text}\n`);
+        res.end(`${text}`);
       });
   }
 });
