@@ -63,4 +63,10 @@ describe('calculateNumber DIVIDE', function () {
   it('Divide assert Equal', function () {
     assert.strictEqual(calculateNumber('DIVIDE', 0.4999, 20.499), 0);
   })
+  it ('Divide assert Equal', function () {
+    assert.strictEqual(calculateNumber('DIVIDE', 7, 2), 3.5);
+  })
+  it ('Divide assert Equal', function () {
+    assert.strictEqual(calculateNumber('DIVIDE', 7.6, -3.9), -2);
+  })
 })
