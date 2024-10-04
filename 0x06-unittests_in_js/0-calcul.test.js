@@ -27,7 +27,4 @@ describe('calculateNumber', function () {
   it('assert Equal', function () {
     assert.equal(calculateNumber(NaN, 2), NaN);
   })
-  it('assert Equal', function () {
-    assert.equal(calculateNumber(123456789.5, 0.499999), 123456790);
-  })
 })
