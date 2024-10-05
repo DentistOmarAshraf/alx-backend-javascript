@@ -17,6 +17,7 @@ describe('sendPaymentRequestToApi', () => {
     const spyLog = sinon.spy(console, "log")
     sendPaymentRequestToApi(100, 20);
     expect(stub.returnValues).to.deep.equal([10]);
+    expect(stub.firstCall.args).to.deep.equal(['SUM', 100, 20])
     expect(stub.calledOnce).to.be.true;
     expect(spyLog.calledWith('The total is: 10')).to.be.true;
   });
