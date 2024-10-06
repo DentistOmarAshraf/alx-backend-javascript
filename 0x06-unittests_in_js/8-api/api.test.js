@@ -13,11 +13,9 @@ describe('Testing Express server', () => {
     myPromise = myRequest({ url: 'http://localhost:7865/' })
   })
   it('Testing route (/)', async () => {
-    try {
-      const response = await myPromise
-      expect(response.statusCode).to.equal(200);
-      const data = await response.body;
-      expect(data).to.equal(textResponse);
-    } catch (err) { }
+    const response = await myPromise
+    expect(await response.statusCode).to.equal(200);
+    const data = await response.body;
+    expect(data).to.equal(textResponse);
   })
 })
