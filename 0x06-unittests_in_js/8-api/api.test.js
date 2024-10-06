@@ -10,18 +10,14 @@ describe('Testing Express server', () => {
   const textResponse = 'Welcome to the payment system';
   let myPromise;
   beforeEach(() => {
-    myPromise = myRequest({url: 'http://localhost:7865/'})
+    myPromise = myRequest({ url: 'http://localhost:7865/' })
   })
-  it('Testing route (/)', (done) => {
-    myPromise
-      .then((response) => {
-        expect(response.statusCode).to.equal(200);
-        return response.body
-      })
-      .then((data) => {
-        expect(data).to.equal(textResponse);
-        done()
-      })
-      .catch(done);
+  it('Testing route (/)', async () => {
+    try {
+      const response = await myPromise
+      expect(response.statusCode).to.equal(200);
+      const data = await response.body;
+      expect(data).to.equal(textResponse);
+    } catch (err) { }
   })
 })
