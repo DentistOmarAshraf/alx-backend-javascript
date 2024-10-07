@@ -20,7 +20,7 @@ class StudentsController {
         response.send(responseText);
       })
       .catch((err) => {
-        const theError = err.toString();
+        const theError = err.message.toString();
         response.statusCode = 500;
         response.setHeader('Content-Type', 'text/plain');
         response.setHeader('Content-Length', theError.length);
@@ -47,7 +47,7 @@ class StudentsController {
           response.send(textResponse);
         })
         .catch((err) => {
-          const theError = err.toString();
+          const theError = err.message.toString();
           response.statusCode = 500;
           response.setHeader('Content-Type', 'text/plain');
           response.setHeader('Content-Length', theError.length);
@@ -58,4 +58,3 @@ class StudentsController {
 }
 
 export default StudentsController;
-module.exports = StudentsController;

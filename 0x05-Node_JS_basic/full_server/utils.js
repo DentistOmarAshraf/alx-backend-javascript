@@ -43,4 +43,3 @@ const readDatabase = (path) => {
 };
 
 export default readDatabase;
-module.exports = readDatabase;
