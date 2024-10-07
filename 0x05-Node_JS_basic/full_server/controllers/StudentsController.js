@@ -4,7 +4,8 @@ const readDatabase = require('../utils');
 
 class StudentsController {
   static getAllStudents(request, response) {
-    readDatabase('database.csv')
+    const dataPath = process.argv.length > 2 ? process.argv[2] : '';
+    readDatabase(dataPath)
       .then((data) => {
         const responseArray = ['This is the list of our students'];
         for (const field in data) {
@@ -29,6 +30,7 @@ class StudentsController {
 
   static getAllStudentsByMajor(request, response) {
     const theMajor = request.params.major;
+    const dataPath = process.argv.length > 2 ? process.argv[2] : '';
     if (!(['CS', 'SWE'].includes(theMajor))) {
       const textResponse = 'Major parameter must be CS or SWE';
       response.statusCode = 500;
@@ -36,7 +38,7 @@ class StudentsController {
       response.setHeader('Content-Length', textResponse.length);
       response.send(textResponse);
     } else {
-      readDatabase('database.csv')
+      readDatabase(dataPath)
         .then((data) => {
           const textResponse = `List: ${data[theMajor].join(', ')}`;
           response.statusCode = 200;
