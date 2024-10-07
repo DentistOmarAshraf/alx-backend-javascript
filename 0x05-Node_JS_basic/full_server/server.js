@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 
-const express = require('express');
-const myRoutes = require('./routes/index');
+import express from 'express';
+import router from './routes/index';
 
 const app = express();
 
-app.use('/', myRoutes);
+app.use('/', router);
 
 app.listen(1245, () => {
   console.log('Server listen to port 1245');
 });
 
+export default app;
 module.exports = app;

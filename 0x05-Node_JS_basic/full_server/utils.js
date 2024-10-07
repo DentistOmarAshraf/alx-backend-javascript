@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
+import fs from 'fs';
 
 /**
  * readDatabase - Read Database.csv file async
@@ -42,4 +42,5 @@ const readDatabase = (path) => {
   return myPromise;
 };
 
+export default readDatabase;
 module.exports = readDatabase;

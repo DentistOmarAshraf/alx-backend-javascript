@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const readDatabase = require('../utils');
+import readDatabase from '../utils';
 
 class StudentsController {
   static getAllStudents(request, response) {
@@ -57,4 +57,5 @@ class StudentsController {
   }
 }
 
+export default StudentsController;
 module.exports = StudentsController;
